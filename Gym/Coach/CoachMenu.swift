@@ -74,6 +74,7 @@ class CoachMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return loginCoachTrainings.count
     }
+//
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -114,12 +115,24 @@ class CoachMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
             cell.buttonCancle.addTarget(self, action: #selector(cancle(sender:)), for: .touchUpInside)
             
+            self.borderCell(cell: cell)
+                
+           
+        
             return cell
         }
         
 
     }
-    
+   
+    func borderCell(cell: UITableViewCell){
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 2
+        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        let myColor = UIColor.white
+        cell.layer.borderColor = myColor.cgColor
+    }
     
     @objc func cancle(sender: UIButton){
         let buttonTag = sender.tag

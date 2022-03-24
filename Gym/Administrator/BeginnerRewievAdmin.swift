@@ -104,38 +104,45 @@ class BeginnerRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDat
         alertController.addTextField()
         alertController.addTextField()
         alertController.addTextField()
+        alertController.addTextField()
         
-        let firstNameTxField = alertController.textFields![0]
-        let lastNameTxField = alertController.textFields![1]
-        let usernameTxField = alertController.textFields![2]
-        let passwordTxField = alertController.textFields![3]
+        let usernameTxField = alertController.textFields![0]
+        let firstNameTxField = alertController.textFields![1]
+        let lastNameTxField = alertController.textFields![2]
+        let emailTxField = alertController.textFields![3]
+        let passwordTxField = alertController.textFields![4]
         
         firstNameTxField.placeholder = "Enter first name"
         lastNameTxField.placeholder = "Enter last name"
         usernameTxField.placeholder = "Enter username"
         passwordTxField.placeholder = "Enter password"
+        emailTxField.placeholder = "Enter email"
         
         self.present(alertController, animated: true, completion: nil)
         
         let submitAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             
-            let newBeginner = Beginner(context: self.context.self)
-
-            newBeginner.id = self.generateNewId()
-            newBeginner.firstName = firstNameTxField.text
-            newBeginner.lastName = lastNameTxField.text
-            newBeginner.username = usernameTxField.text
-            newBeginner.password = passwordTxField.text
-            newBeginner.userType = "beginner"
-
-            try! self.context.save()
+            if self.checkValue(firstName: firstNameTxField.text!, lastName: lastNameTxField.text!, password: passwordTxField.text!, email: emailTxField.text!){
             
-            self.fetchUsers()
-            self.findBeginners()
+                let newBeginner = Beginner(context: self.context.self)
 
-            NSLog("Submit")
-            
+                newBeginner.id = self.generateNewId()
+                newBeginner.firstName = firstNameTxField.text
+                newBeginner.lastName = lastNameTxField.text
+                newBeginner.username = usernameTxField.text
+                newBeginner.password = passwordTxField.text
+                newBeginner.email = emailTxField.text
+                newBeginner.userType = "beginner"
+
+                try! self.context.save()
+                
+                self.fetchUsers()
+                self.findBeginners()
+
+                NSLog("Submit")
+        
+            }
 
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
@@ -144,7 +151,7 @@ class BeginnerRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDat
         }
         alertController.addAction(submitAction)
         alertController.addAction(cancelAction)
-        alertController.view.tintColor = UIColor.black
+        alertController.view.tintColor = UIColor.white
         
     }
     
@@ -257,9 +264,11 @@ class BeginnerRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDat
             UIAlertAction in
             NSLog("Cancel")
         }
+        
         alertController.addAction(submitAction)
         alertController.addAction(cancelAction)
-        alertController.view.tintColor = UIColor.black
+        alertController.view.tintColor = UIColor.blue
+        
         
             
     }

@@ -99,7 +99,6 @@ class CoachRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDataSo
         return max + 1
     }
     
-    //ADD DATA
     @objc func addTapped(){
                 
         let alertController = UIAlertController(title: "Add coach", message: "Enter values", preferredStyle: .alert)
@@ -108,37 +107,45 @@ class CoachRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDataSo
         alertController.addTextField()
         alertController.addTextField()
         alertController.addTextField()
+        alertController.addTextField()
         
-        let firstNameTxField = alertController.textFields![0]
-        let lastNameTxField = alertController.textFields![1]
-        let usernameTxField = alertController.textFields![2]
-        let passwordTxField = alertController.textFields![3]
+        let usernameTxField = alertController.textFields![0]
+        let firstNameTxField = alertController.textFields![1]
+        let lastNameTxField = alertController.textFields![2]
+        let emailTxField = alertController.textFields![3]
+        let passwordTxField = alertController.textFields![4]
         
         firstNameTxField.placeholder = "Enter first name"
         lastNameTxField.placeholder = "Enter last name"
         usernameTxField.placeholder = "Enter username"
         passwordTxField.placeholder = "Enter password"
+        emailTxField.placeholder = "Enter email"
         
         self.present(alertController, animated: true, completion: nil)
         
         let submitAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
             UIAlertAction in
             
-            let newCoach = Coach(context: self.context.self)
+            if self.checkValue(firstName: firstNameTxField.text!, lastName: lastNameTxField.text!, password: passwordTxField.text!, email: emailTxField.text!){
+                
+                let newCoach = Coach(context: self.context.self)
 
-            newCoach.id = self.generateNewId()
-            newCoach.firstName = firstNameTxField.text
-            newCoach.lastName = lastNameTxField.text
-            newCoach.username = usernameTxField.text
-            newCoach.password = passwordTxField.text
-            newCoach.userType = "coach"
+                newCoach.id = self.generateNewId()
+                newCoach.firstName = firstNameTxField.text
+                newCoach.lastName = lastNameTxField.text
+                newCoach.username = usernameTxField.text
+                newCoach.password = passwordTxField.text
+                newCoach.email = emailTxField.text
+                newCoach.userType = "coach"
 
-            try! self.context.save()
-            
-            self.fetchUsers()
-            self.findCoach()
+                try! self.context.save()
+                
+                self.fetchUsers()
+                self.findCoach()
 
-            NSLog("Submit")
+                NSLog("Submit")
+            }
+
             
 
         }
@@ -148,7 +155,7 @@ class CoachRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         alertController.addAction(submitAction)
         alertController.addAction(cancelAction)
-        alertController.view.tintColor = UIColor.black
+        alertController.view.tintColor = UIColor.white
     }
     
     @objc func back(){
@@ -163,7 +170,6 @@ class CoachRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    //CELL DATA
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as! UserTableViewCell
@@ -269,7 +275,7 @@ class CoachRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         alertController.addAction(submitAction)
         alertController.addAction(cancelAction)
-        alertController.view.tintColor = UIColor.black
+        alertController.view.tintColor = UIColor.white
         
             
     }
