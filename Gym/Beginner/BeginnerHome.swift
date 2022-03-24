@@ -1,0 +1,19 @@
+//
+//  BeginnerHoume.swift
+//  Gym
+//
+//  Created by Vladimir Djurdjevic on 19.3.22..
+//
+
+import UIKit
+
+class BeginnerHome: UITabBarController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+    
+
+
+}

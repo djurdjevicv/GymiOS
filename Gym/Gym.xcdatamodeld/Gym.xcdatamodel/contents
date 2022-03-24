@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Administrator" representedClassName="Administrator" parentEntity="User" syncable="YES"/>
+    <entity name="Beginner" representedClassName="Beginner" parentEntity="User" syncable="YES"/>
+    <entity name="Coach" representedClassName="Coach" parentEntity="User" syncable="YES"/>
+    <entity name="Training" representedClassName="Training" syncable="YES">
+        <attribute name="beginnerUsername" optional="YES" attributeType="String"/>
+        <attribute name="coachUsername" optional="YES" attributeType="String"/>
+        <attribute name="dateTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="endTraining" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" isAbstract="YES" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="userType" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Administrator" positionX="-54" positionY="36" width="128" height="29"/>
+        <element name="Beginner" positionX="-18" positionY="54" width="128" height="29"/>
+        <element name="Coach" positionX="-36" positionY="45" width="128" height="29"/>
+        <element name="Training" positionX="-27" positionY="36" width="128" height="119"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="134"/>
+    </elements>
+</model>
