@@ -106,7 +106,9 @@ class ProfileBeginner: UIViewController {
             }
             
             try! self.context.save()
+            
             setDataInTextField()
+            errorLabel.alpha = 0
             
             let alertController = UIAlertController(title: "Succesful edit", message: .none,  preferredStyle: .alert)
             

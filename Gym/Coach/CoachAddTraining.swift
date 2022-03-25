@@ -94,6 +94,7 @@ class CoachAddTraining: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         if selectedRow == nil{
             message = "Please select training duration!"
         }
+
         if dateAndTimePicker.date == nil{
             message = "Please select training date and time!"
         }

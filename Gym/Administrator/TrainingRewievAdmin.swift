@@ -65,6 +65,17 @@ class TrainingRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDat
         catch{
 
         }
+        
+        tableView.reloadData()
+    }
+    
+    func borderCell(cell: UITableViewCell){
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 2
+        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        let myColor = UIColor.white
+        cell.layer.borderColor = myColor.cgColor
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +85,7 @@ class TrainingRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDat
         else{
             return trainingList!.count
         }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,6 +122,8 @@ class TrainingRewievAdmin: UIViewController, UITableViewDelegate, UITableViewDat
             cell.buttonCancle.tag = indexPath.row
         
             cell.buttonCancle.addTarget(self, action: #selector(cancle(sender:)), for: .touchUpInside)
+            
+            self.borderCell(cell: cell)
             
             
             return cell

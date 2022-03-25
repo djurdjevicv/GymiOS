@@ -35,6 +35,11 @@ class BeginnerMenu: UIViewController,  UITableViewDelegate, UITableViewDataSourc
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loadTraining()
+        findBeginnerTraining()
+    }
+    
     func loadTraining(){
 
         trainingList?.removeAll()
@@ -75,6 +80,15 @@ class BeginnerMenu: UIViewController,  UITableViewDelegate, UITableViewDataSourc
         
     }
     
+    func borderCell(cell: UITableViewCell){
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 2
+        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        let myColor = UIColor.white
+        cell.layer.borderColor = myColor.cgColor
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
     
@@ -111,7 +125,7 @@ class BeginnerMenu: UIViewController,  UITableViewDelegate, UITableViewDataSourc
             cell.buttonCancle.tag = indexPath.row
         
             cell.buttonCancle.addTarget(self, action: #selector(cancle(sender:)), for: .touchUpInside)
-            
+            self.borderCell(cell: cell)
             
             return cell
         }

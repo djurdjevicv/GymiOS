@@ -74,7 +74,6 @@ class CoachMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return loginCoachTrainings.count
     }
-//
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -117,8 +116,6 @@ class CoachMenu: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             self.borderCell(cell: cell)
                 
-           
-        
             return cell
         }
         
